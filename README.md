@@ -1,38 +1,29 @@
-# LeetCode Practice
+# LeetCode Challenge
 
-This repository contains my solutions to various LeetCode problems. I use this space to practice coding, improve my algorithmic skills, and showcase my solutions.
+## Overview
+Welcome to my LeetCode solution repository! This project addresses the coding challenge presented by [657.  Robot Return to Origin](https://leetcode.com/problems/robot-return-to-origin/). Below, you'll find details about the problem, my approach to solving it, and the implemented solution.
 
-## About the problem
-- **Problem Number** : 9
-- **Problem Name** :  [Palindrome Number](https://leetcode.com/problems/palindrome-number/description/ "https://leetcode.com/problems/palindrome-number/description/")
-- **Problem difficulty** : Easy (55.01%) 🟢
-- **Category** : [`Math`](https://leetcode.com/tag/math "https://leetcode.com/tag/math")
-- **Programming language used** - [Java](https://www.java.com/en/)
+## Problem Statement
+Given a robot starting at the origin (0, 0) on a 2D plane, determine if it returns to the origin after a sequence of moves (`R`, `L`, `U`, `D`). The orientation is irrelevant, and each move has the same magnitude. Return `true` if the robot returns to the origin, `false` otherwise.
 
-In this problem given an integer `x`, return `true` _if_ `x` _is a_ _**palindrome**__, and_ `false` _otherwise_.
-given examples are 
+**Example**
+> **Input:** moves = "UD"
+> **Output:** true
+> **Explanation**: The robot moves up once, and then down once. All moves have the same magnitude, so it ended up at the origin where it started. Therefore, we return true.
 
->**Example 1:**
-```
-Input: x = 121
-Output: true
-Explanation: 121 reads as 121 from left to right and from right to left.
-```
+**Constraints**
+-   `1 <= moves.length <= 2 * 104`
+-   `moves`  only contains the characters  `'U'`,  `'D'`,  `'L'`  and  `'R'`.
 
->**Example 2:**
-```
-Input: x = -121
-Output: false
-Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
-```
+**Language Used**
+> Java
 
->**Example 3:**
-```
-Input: x = 10
-Output: false
-Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
-```
+**Difficulty**
+>Easy
 
-## Approach Explanation
-[![Screenshot-2023-12-15-114734.png](https://i.postimg.cc/0Qn7PPCh/Screenshot-2023-12-15-114734.png)](https://postimg.cc/ygJDTqtT)
-In my appro
+## Solution Overview
+The goal is to check if a robot, starting from the origin, returns to the origin after a sequence of moves. Initially, a straightforward approach of counting left-right and up-down moves seems logical. However, issues arise when there are imbalanced moves at different parts of the sequence.
+
+To address this, we use two counters, `LR_Present` and `UD_Present`, to keep track of the net left-right and up-down movements. For each 'L', we increase `LR_Present`; for 'R', we decrease it. Similarly, 'U' increases `UD_Present`, and 'D' decreases it.
+
+By going through the entire move sequence, these counters accumulate the net effect of left-right and up-down movements. If both counters end up at zero, it means that for every left, there was a corresponding right, and for every up, there was a corresponding down. This ensures the robot returns to the origin, and the function returns `true`. Otherwise, it returns `false`.
