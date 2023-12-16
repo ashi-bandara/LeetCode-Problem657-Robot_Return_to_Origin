@@ -1,4 +1,4 @@
-# LeetCode Challenge
+# LeetCode Challenge D1
 
 ## Overview
 Welcome to my LeetCode solution repository! This project addresses the coding challenge presented by [657.  Robot Return to Origin](https://leetcode.com/problems/robot-return-to-origin/). Below, you'll find details about the problem, my approach to solving it, and the implemented solution.
